@@ -1,22 +1,28 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import {ClerkProvider} from '@clerk/nextjs'
+import './globals.css'
+import { Metadata } from 'next'
+import Navbar from "@/components/navbar"
 
 
-export const metadata: Metadata = {
-  title: "Intellipage",
-  description: "Think. Write. Sync. ✨",
-};
 
+export const metadata: Metadata = { title: "Intellipage", description: "Think. Write. Sync. ✨", };
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body      >
-        {children}
-      </body>
-    </html>
-  );
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+          <Navbar/>
+
+          <div className="container mx-auto px-4"></div>
+
+
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
+  )
 }
