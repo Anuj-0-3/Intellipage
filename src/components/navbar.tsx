@@ -3,6 +3,8 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-reac
 import { useUser } from '@clerk/nextjs'
 
 import React from 'react'
+import BreadCrumbs from './BreadCrumbs'
+
 
 
 const Navbar = () => {
@@ -16,7 +18,7 @@ const Navbar = () => {
         {`'s `}Space</h1>
       )}
 
-      {/* Breadcrumbs */}
+      <BreadCrumbs />
 
       <SignedOut>
         <SignInButton />

@@ -14,7 +14,11 @@ const SidebarOption = ({href,id}:{href:string,id:string}) => {
   if (!data) return null;
   return (
     <div>
-      <Link href={href} className={`relative border p-2 rounded-md ${isActive ? 'bg-gray-300 font-bold border-black' : 'border-gray-400'}`}>
+      <Link href={href} 
+      className={` border p-2 rounded-md ${
+        isActive ? 'bg-gray-300 font-bold border-black' : 'border-gray-400'
+        }`}
+      >
       <p className='truncate'>{data.title}</p>
       </Link>
     </div>
