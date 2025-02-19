@@ -10,8 +10,12 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.11.3",
+    "@liveblocks/client": "^2.18.2",
+    "@liveblocks/react": "^2.18.2",
+    "@liveblocks/yjs": "^2.18.2",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
+    "@slate-yjs/core": "^1.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "firebase": "^11.3.1",
@@ -21,8 +25,11 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-firebase-hooks": "^5.1.1",
+    "slate": "^0.112.0",
+    "slate-react": "^0.112.1",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "yjs": "^13.6.23"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
