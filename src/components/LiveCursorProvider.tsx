@@ -1,6 +1,7 @@
 'use client'
 import { useMyPresence, useOthers } from '@liveblocks/react'
 import React from 'react'
+import FollowPointer from './FollowPointer'
 
 const LiveCursorProvider = ({children}:{children:React.ReactNode}) => {
     const [myPresence,updateMyPresence]=useMyPresence()
@@ -15,9 +16,16 @@ const LiveCursorProvider = ({children}:{children:React.ReactNode}) => {
 
   return (
     <div onPointerMove={handlePointerMove} onPointerLeave={handlePointerLeave}>
-      {others.filter((other)=> other.presence.cursor !== null).map((connectionId,presence,info))=>(
-        <FollowPointer key={others.id}/>
-      )}
+      {others
+      .filter((other)=> other.presence.cursor !== null)
+      .map(({connectionId,presence,info})=> (
+        <FollowPointer key={connectionId}
+        info ={info}
+        x={presence.cursor!.x}
+        y={presence.cursor!.y}
+        
+        />
+      ))}
     </div>
   )
 }
