@@ -92,12 +92,12 @@ const Sidebar = () => {
 
       {groupedData.editor.length > 0 && (
         <>
-        <h2 className='text-gray-500 font-semibold text-sm'>
-          Shared with me
-        </h2>
-        {groupedData.editor.map((doc) => (
-          <SidebarOption key={doc.id} href={`/doc/${doc.id}`} id={doc.id} />
-        ))}
+          <h2 className='text-gray-500 font-semibold text-sm'>
+            Shared with me
+          </h2>
+          {groupedData.editor.map((doc) => (
+            <SidebarOption key={doc.id} href={`/doc/${doc.id}`} id={doc.id} />
+          ))}
         </>
       )}
     </>
@@ -115,8 +115,10 @@ const Sidebar = () => {
           </SheetTrigger>
           <SheetContent side='left'>
             <SheetHeader>
-              <SheetTitle>{menuOptions}</SheetTitle>
-              <div></div>
+              <SheetTitle>Menu</SheetTitle> {/* A simple title */}
+              <SheetDescription>
+                {menuOptions} {/* Move content inside SheetDescription */}
+              </SheetDescription>
             </SheetHeader>
           </SheetContent>
         </Sheet>

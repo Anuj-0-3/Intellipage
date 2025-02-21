@@ -1,4 +1,4 @@
-import LiveBlocksProvider from '@/components/LiveblocksProvider'
+import LiveBlocksProvider from '@/components/LiveBlocksProvider'
 import React from 'react'
 
 const PageLayout = ({children}:{children:React.ReactNode}) => {
