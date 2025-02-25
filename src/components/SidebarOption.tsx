@@ -6,20 +6,24 @@ import { db } from '../../firebase'
 import { doc } from 'firebase/firestore'
 import { usePathname } from 'next/navigation'
 
-const SidebarOption = ({href,id}:{href:string,id:string}) => {
-  const [data, loading, error] = useDocumentData(doc(db,"documents",id));
+const SidebarOption = ({ href, id }: { href: string; id: string }) => {
+  const [data, loading, error] = useDocumentData(doc(db as any, "documents", id));
   const pathname = usePathname();
-  const isActive = href.includes(pathname) && pathname !== "/";
+  const isActive = pathname === href; // Ensuring exact match
 
+  if (loading) return <p className="text-gray-500 text-sm">Loading...</p>;
+  if (error) return <p className="text-red-500 text-sm">Error loading document</p>;
   if (!data) return null;
+
   return (
     <div>
-      <Link href={href} 
-      className={` border p-2 rounded-md ${
-        isActive ? 'bg-gray-300 font-bold border-black' : 'border-gray-400'
+      <Link 
+        href={href} 
+        className={`block border p-2 rounded-md transition-colors ${
+          isActive ? 'bg-gray-300 font-bold border-black' : 'border-gray-400 hover:bg-gray-200'
         }`}
       >
-      <p className='truncate'>{data.title}</p>
+        <p className='truncate'>{data.title || "Untitled Document"}</p>
       </Link>
     </div>
   )

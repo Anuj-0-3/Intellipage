@@ -7,6 +7,8 @@ export async function POST(req:NextRequest) {
     auth.protect()
     const { sessionClaims}= await auth();
     const { room }= await req.json();
+    
+   
 
     const session = liveblocks.prepareSession(sessionClaims?.email!,{
         userInfo:{
@@ -15,6 +17,8 @@ export async function POST(req:NextRequest) {
             avatar:sessionClaims?.image!,
         }
     });
+
+    
 
     const usersInRoom = await adminDb
     .collectionGroup("rooms")

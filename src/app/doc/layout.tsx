@@ -1,11 +1,14 @@
 import LiveBlocksProvider from '@/components/LiveBlocksProvider'
 import React from 'react'
 
-const PageLayout = ({children}:{children:React.ReactNode}) => {
+const PageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-      <LiveBlocksProvider>{children}</LiveBlocksProvider>
-    </div>
+    <LiveBlocksProvider>
+      <div className="h-full w-full">
+        {children}
+      </div>
+    </LiveBlocksProvider>
+
   )
 }
 
