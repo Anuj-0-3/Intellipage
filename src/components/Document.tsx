@@ -7,11 +7,14 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import Editor from './Editor';
+import useOwner from '@/lib/useOwner';
+import DeleteDocument from './DeleteDocument';
 
 const Document = ({ id }: { id: string }) => {
     const [data, loading, error] = useDocumentData(doc(db, "documents", id));
     const [input, setInput] = useState("");
     const [isUpdating, startTransition] = useTransition();
+    const isOwner = useOwner();
 
     useEffect(() => {
         if (data?.title && data.title !== input) {
@@ -55,6 +58,14 @@ const Document = ({ id }: { id: string }) => {
                 >
                 {isUpdating ? "Updating..." : "Update"}
             </Button>
+
+            {isOwner && (
+                <>
+                <DeleteDocument/>
+                </>
+            )}
+
+             
         </form>
         </div>
         <hr className="w-full my-4" />

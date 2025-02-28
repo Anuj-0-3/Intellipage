@@ -3,6 +3,7 @@ import './globals.css'
 import { Metadata } from 'next'
 import Navbar from "@/components/navbar"
 import Sidebar from '@/components/Sidebar';
+import { Toaster } from '@/components/ui/sonner';
 
 
 export const metadata: Metadata = { 
@@ -26,6 +27,7 @@ export default function RootLayout({
               {children}
             </main>
           </div>
+          <Toaster position='top-center'/>
         </body>
       </html>
     </ClerkProvider>
