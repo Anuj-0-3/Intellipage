@@ -1,6 +1,6 @@
 'use client'
 import { usePathname } from 'next/navigation'
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -12,29 +12,42 @@ import {
 
 
 const BreadCrumbs = () => {
-    const path = usePathname()
-    const segments = path.split('/')
+    const pathname = usePathname();
+    const [segments, setSegments] = useState<string[] | null>(null);
+  
+    useEffect(() => {
+      setSegments(pathname.split("/").filter(Boolean));
+    }, [pathname]);
+  
+    if (segments === null) return null;
+  
     return (
-            <Breadcrumb>
-                <BreadcrumbList>
+      <Breadcrumb>
+        <BreadcrumbList>
+          {segments.length === 0 ? (
+            <BreadcrumbItem>
+              <BreadcrumbLink className="text-3xl font-mono" href="/">Intellipage</BreadcrumbLink>
+            </BreadcrumbItem>
+          ) : (
+            <>
+              <BreadcrumbItem>
+                <BreadcrumbLink className="text-xl" href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              {segments.map((segment, index) => {
+                const href = `/${segments.slice(0, index + 1).join("/")}`;
+                return (
+                  <Fragment key={segment}>
+                    <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                      <BreadcrumbLink href={href}>{segment}</BreadcrumbLink>
                     </BreadcrumbItem>
-                    {segments.map((segment, index) => {
-                        if (!segment) return null
-                        const href = `/${segments.slice(0, index + 1).join('/')}`
-                        const isLast = index === segments.length - 1
-                        return (    
-                                <Fragment key={segment}>
-                                <BreadcrumbSeparator />               
-                                <BreadcrumbItem key={segment}>
-                                    <BreadcrumbLink href={href}>{segment}</BreadcrumbLink>
-                                </BreadcrumbItem>
-                                </Fragment>
-                        )
-                    })}
-                </BreadcrumbList>
-            </Breadcrumb>
+                  </Fragment>
+                );
+              })}
+            </>
+          )}
+        </BreadcrumbList>
+      </Breadcrumb>
     )
 }
 

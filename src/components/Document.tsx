@@ -43,7 +43,7 @@ const Document = ({ id }: { id: string }) => {
     if (error) return <div className="text-center text-red-500 py-4">Error: {error.message}</div>;
 
     return (
-        <div className='flex-1 h-full bg-white p-5'>
+        <div className='flex-1 h-full bg-customGray p-5'>
 
         <div className="flex max-w-6xl mx-auto justify-between items-center pb-5">
         <form className="flex w-full space-x-2" onSubmit={updateTitle}>
