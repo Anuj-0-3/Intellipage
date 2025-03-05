@@ -4,7 +4,6 @@ import { useCollection } from "react-firebase-hooks/firestore"
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -24,7 +23,6 @@ interface RoomDocument extends DocumentData {
 }
 
 const Sidebar = () => {
-
   const { user } = useUser();
   const [groupedData, setGroupedData] = React.useState<{ owner: RoomDocument[]; editor: RoomDocument[] }>({ owner: [], editor: [] });
   const [data, loading, error] = useCollection(
@@ -33,7 +31,6 @@ const Sidebar = () => {
         collectionGroup(db, 'rooms'),
         where('userId', '==', user.emailAddresses[0].toString())
       )
-
     )
   );
 
@@ -52,13 +49,11 @@ const Sidebar = () => {
             id: curr.id,
             ...roomData,
           });
-        }
-        else {
+        } else {
           acc.editor.push({
             id: curr.id,
             ...roomData,
           });
-
         }
         return acc;
       }, {
@@ -66,68 +61,55 @@ const Sidebar = () => {
       editor: [],
     }
     )
-
     setGroupedData(grouped);
   }, [data]);
-
 
   const menuOptions = (
     <>
       <NewDocument />
-
-      <div className='flex py-4 flex-col space-y-4 md:max-w-36 '>
+      <div className='flex flex-col space-y-6 py-6'>
         {groupedData.owner.length === 0 ? (
-          <h2 className='text-gray-500 font-semibold text-sm'>No document found</h2>
+          <h2 className='text-gray-400 font-medium text-base'>No documents found</h2>
         ) : (
           <>
-            <h2 className='text-gray-500 font-semibold text-sm'>
-              My Documents
-            </h2>
+            <h2 className='text-gray-600 font-semibold text-lg border-b pb-2'>My Documents</h2>
             {groupedData.owner.map((doc) => (
               <SidebarOption key={doc.id} href={`/doc/${doc.id}`} id={doc.id} />
             ))}
           </>
         )}
       </div>
-
       {groupedData.editor.length > 0 && (
-        <>
-          <h2 className='text-gray-500 font-semibold text-sm'>
-            Shared with me
-          </h2>
+        <div className='mt-4'>
+          <h2 className='text-gray-600 font-semibold text-lg border-b pb-2'>Shared with me</h2>
           {groupedData.editor.map((doc) => (
             <SidebarOption key={doc.id} href={`/doc/${doc.id}`} id={doc.id} />
           ))}
-        </>
+        </div>
       )}
     </>
   );
 
-
-
-
   return (
-    <div className='p-2 md:p-5 bg-gray-200 relative'>
+    <div className='p-4 md:p-6 bg-gray-100 shadow-xl rounded-xl md:rounded-2xl backdrop-blur-lg border border-gray-300/50'>
       <div className='md:hidden'>
         <Sheet>
           <SheetTrigger>
-            <MenuIcon className='p-2 hover:opacity-30 rounded-lg ' size={40} />
+            <MenuIcon className='p-2 hover:bg-gray-300 transition rounded-lg' size={40} />
           </SheetTrigger>
-          <SheetContent side='left'>
+          <SheetContent side='left' className='bg-white rounded-lg shadow-xl'>
             <SheetHeader>
-              <SheetTitle>Menu</SheetTitle> {/* A simple title */}
-              <SheetDescription>
-                {menuOptions} {/* Move content inside SheetDescription */}
-              </SheetDescription>
+              <SheetTitle className='text-lg font-bold'>Menu</SheetTitle>
             </SheetHeader>
+            <div className='mt-4'>{menuOptions}</div>
           </SheetContent>
         </Sheet>
       </div>
-      <div className='hidden md:inline'>
+      <div className='hidden md:block overflow-y-auto max-h-[85vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 p-2'>
         {menuOptions}
       </div>
     </div>
   )
 }
 
-export default Sidebar
+export default Sidebar;

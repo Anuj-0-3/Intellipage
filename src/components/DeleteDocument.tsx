@@ -53,7 +53,7 @@ const DeleteDocument = () => {
                         This will delete the document and all its contents,removing all users from the document.
                     </DialogDescription>
                 </DialogHeader>
-                <DialogFooter className="sm:justify-end gap-2">
+                <DialogFooter className="sm:justify-end gap-2 ">
                     <Button
                         type="button"
                         variant="destructive"

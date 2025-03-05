@@ -26,12 +26,12 @@ const BreadCrumbs = () => {
         <BreadcrumbList>
           {segments.length === 0 ? (
             <BreadcrumbItem>
-              <BreadcrumbLink className="text-3xl font-mono" href="/">Intellipage</BreadcrumbLink>
+              <BreadcrumbLink className="text-3xl font-mono text-white" href="/">Intellipage</BreadcrumbLink>
             </BreadcrumbItem>
           ) : (
             <>
               <BreadcrumbItem>
-                <BreadcrumbLink className="text-xl" href="/">Home</BreadcrumbLink>
+                <BreadcrumbLink className="text-xl text-white" href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
               {segments.map((segment, index) => {
                 const href = `/${segments.slice(0, index + 1).join("/")}`;
@@ -39,7 +39,7 @@ const BreadCrumbs = () => {
                   <Fragment key={segment}>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <BreadcrumbLink href={href}>{segment}</BreadcrumbLink>
+                      <BreadcrumbLink className='text-white' href={href}>{segment}</BreadcrumbLink>
                     </BreadcrumbItem>
                   </Fragment>
                 );

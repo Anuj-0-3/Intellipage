@@ -12,6 +12,7 @@
     "@blocknote/react": "^0.24.1",
     "@blocknote/shadcn": "^0.24.1",
     "@clerk/nextjs": "^6.11.3",
+    "@heroicons/react": "^2.2.0",
     "@liveblocks/client": "^2.18.3",
     "@liveblocks/core": "^2.18.3",
     "@liveblocks/node": "^2.18.3",

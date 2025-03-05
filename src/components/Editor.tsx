@@ -36,7 +36,8 @@ function BlockNote({doc, provider, darkmode}:EditorProps) {
   return(
     <div className='relative max-w-6xl mx-auto'>
       <BlockNoteView
-        className='min-h-screen'
+        className='bg-white/40 dark:bg-white/10 shadow-[0px_4px_24px_-1px_rgba(212,175,156,0.25)] 
+             rounded-[40px] border-[3px] border-[#FFF1EA] backdrop-blur-[45px] p-4  '
         editor={editor}
         theme={darkmode ? 'dark' : 'light'}
         />
