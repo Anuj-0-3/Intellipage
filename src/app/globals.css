@@ -14,7 +14,8 @@
   }
 }
 
-/* Override default BlockNote styles */
+/* Blocknote editor  */
+
 .bn-editor {
   background-color: linear-gradient(180deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 100%);
   box-shadow: 0px 4px 24px -1px rgba(212, 175, 156, 0.25);
@@ -24,26 +25,23 @@
 
 }
 
-/* Customize the toolbar */
 .bn-toolbar {
   background-color: rgba(0, 0, 0, 0.1);
-  /* Light background */
   border-radius: 8px;
 }
 
-/* Override the selected text highlight */
 .bn-selected-text {
   background-color: rgba(245, 159, 0, 0.5);
-  /* Orange highlight */
 }
 
-/* Override dark mode styling */
 .dark .bn-editor {
   color: white !important;
 }
 
+/* Backgrounds */
+
 .folding-page{
-    --s: 84px; /* control the size*/
+    --s: 84px; 
     --c1: #ffffff;
     --c2: #71e9a0;
     --c3: #2a6a9b;
@@ -78,7 +76,6 @@
       #8bc34a 20px);
 }
 
-/* 2. Polka Dots */
 .polka-dots {
   background: radial-gradient(circle, #ff4081 10%, transparent 10%) 0 0 / 20px 20px;
 }
@@ -86,15 +83,13 @@
 
 
 .checkers {
-  --b: 4px; /* line thickness */
-  --s: 60px; /* size */
-
+  --b: 4px; 
+  --s: 60px; 
   --c: #0000 75%, #999 0;
   --p1: from -90deg at calc(50% + var(--b)) calc(100% - var(--b));
   --p2: from -90deg at var(--b) calc(50% - var(--b));
   --e: calc(var(--s) / 2);
   --e-: calc(var(--s) / -2);
-
   width: 100%;
   height: 100vh;
   background:
@@ -119,8 +114,6 @@
   98%, 100% { background-position: 0 0, var(--e) var(--e), 0 0, var(--e) var(--e); }
 }
 
-
-/* 4. Wavy Lines */
 .wavy-lines {
   background-color: #e5e5f7;
   opacity: 0.8;
@@ -144,7 +137,7 @@
 }
 
 .heart {
-  --s: 120px; /* Control the size */
+  --s: 120px; 
   --c1: #e7525b;
   --c2: #ffffff;
   
@@ -160,8 +153,7 @@
 }
 
 .eye{
-  --s: 80px; /* control the size */
-  
+  --s: 80px;
   --_g: radial-gradient(#F4EAD5 31%,#0000 32%);
   --_l: radial-gradient(#594F4F 15%,#0000 16%);
   background: var(--_l),var(--_l),var(--_g),var(--_g),#45ADA8;
@@ -182,8 +174,7 @@
 
 
 .illusion{
-    --s: 80px; /* control the size */
-    
+    --s: 80px;
     --c:#6B5344 0;
     --g:conic-gradient(at 50% 25%,#0000 75%,var(--c));
     background:
@@ -206,10 +197,9 @@
 
 
 .moving-square{
-    --s: 100px; /* control the size */
+    --s: 100px;
     --c1: #C3CCAF;
-    --c2: #67434F;
-    
+    --c2: #67434F; 
     --_s: calc(2*var(--s)) calc(2*var(--s));
     --_g: var(--_s) conic-gradient(at 40% 40%,#0000 75%,var(--c1) 0);
     --_p: var(--_s) conic-gradient(at 20% 20%,#0000 75%,var(--c2) 0);
@@ -260,22 +250,18 @@
     }  
 }
 
-/* 5. Zig-Zag */
 .zig-zag {
   background-color: #e5e5f7;
   opacity: 0.8;
   background: linear-gradient(135deg, #00000055 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #000000 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #00000055 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #000000 25%, #e5e5f7 25%) 0px 0/ 20px 20px;
 }
 
-/* 6. Grid Dots */
 .grid-dots {
   background: radial-gradient(circle, #ff5722 10%, transparent 10%) 0 0 / 30px 30px,
     radial-gradient(circle, #ff5722 10%, transparent 10%) 15px 15px / 30px 30px;
   background-color: #ffe0b2;
 }
 
-
-/* 11. Diamond Pattern */
 .diamond {
   background: repeating-linear-gradient(45deg,
       #ff4081,
@@ -289,22 +275,19 @@
       transparent 20px);
 }
 
-/* 12. Wave Pattern */
 .wave {
   background: radial-gradient(circle at 50% 120%, rgba(255, 255, 255, 0.5), transparent 70%) repeat;
   background-size: 60px 60px;
 }
 
-/* 13. Zebra Stripes */
 .zebra-stripes {
   background: repeating-linear-gradient(-45deg,
-      #9c27b0,
-      #9c27b0 20px,
-      #e1bee7 20px,
-      #e1bee7 40px);
+      #1e1d1f,
+      #292629 20px,
+      #bfbdc0 20px,
+      #ffffff 40px);
 }
 
-/* 14. Sunburst Pattern */
 .sunburst {
   background: conic-gradient(#ffeb3b 15deg,
       #ff9800 15deg 30deg,
@@ -314,13 +297,10 @@
       #f44336 75deg 90deg);
 }
 
-
-/* 1. Honeycomb Pattern */
 .honeycomb {
-    --s: 37px; /* control the size*/
+    --s: 37px; 
     --c1: #f37a16;
-    --c2: #ecbe13;
-    
+    --c2: #ecbe13; 
     --c:#0000,var(--c1) .5deg 119.5deg,#0000 120deg;
     --g1:conic-gradient(from  60deg at 56.25% calc(425%/6),var(--c));
     --g2:conic-gradient(from 180deg at 43.75% calc(425%/6),var(--c));
@@ -333,8 +313,6 @@
     background-size: calc(2*var(--s)) calc(3.46*var(--s));
 }
 
-
-/* 3. Concentric Circles */
 .concentric-circles {
   background: radial-gradient(circle, rgba(0, 0, 0, 0.7) 10%, transparent 10%, transparent 20%, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0.7) 30%, transparent 30%);
   background-size: 50px 50px;
@@ -353,16 +331,37 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
-
-.sun-rays {
-  background: repeating-conic-gradient(rgb(255, 132, 0) 0deg 10deg,
-      transparent 10deg 20deg);
-  background-size: 100% 100%;
-  opacity: 0.7;
+@keyframes sun-rays-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-/* 8. Shattered Glass */
+.sun-rays {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sun-rays::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: repeating-conic-gradient(
+    rgb(255, 132, 0) 0deg 10deg,
+    transparent 10deg 20deg
+  );
+  opacity: 0.7;
+  animation: sun-rays-animation 20s linear infinite;
+}
+
 .shattered-glass {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 15%, transparent 15%) 0 0,
     linear-gradient(225deg, rgba(0, 0, 0, 0.7) 15%, transparent 15%) 0 0,
@@ -371,6 +370,7 @@
   background-size: 50px 50px;
   opacity: 0.7;
 }
+
 
 /* This is for sooner */
 
