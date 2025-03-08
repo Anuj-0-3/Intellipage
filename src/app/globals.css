@@ -426,3 +426,36 @@
   --input: 240 5% 30%;
   --ring: 220 98% 61%;
 }
+
+/* Bottom Page Divider */
+
+.custom-shape-divider-bottom-1741448917 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1741448917 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 141px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1741448917 .shape-fill {
+  fill: url(#gradient-fill);
+}
+
+/* Gradient Definition */
+.custom-shape-divider-bottom-1741448917 svg defs linearGradient {
+  stop:first-child {
+    stop-color: #FB923C; /* Orange-400 */
+  }
+  stop:last-child {
+    stop-color: #DC2626; /* Red-600 */
+  }
+}
