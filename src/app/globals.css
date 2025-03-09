@@ -459,3 +459,69 @@
     stop-color: #DC2626; /* Red-600 */
   }
 }
+
+/* background  bubbles*/
+
+.bubbles{
+  background-color: #fff;
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  z-index: -1;
+}
+.bubbles span[style*="--size: 5px"] {
+  display: none;
+}
+.bubbles span {
+  max-width: 30px; /* Prevent large bubbles */
+  max-height: 30px;
+}
+
+
+.bubbles span{
+  --color: #00b7c2;
+  background-color: var(--color);
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  width: var(--size);
+  aspect-ratio: 1/1;
+  left:var(--position-x);
+  top:var(--position-y);
+  opacity: var(--visibility);
+  animation: swing var(--anime-duration) linear infinite;
+  animation-delay: var(--anime-delay);
+}
+
+@keyframes swing {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(var(--distance));
+  }
+  75% {
+    transform: translateX(calc(0px - var(--distance)));
+  }
+}
+
+.bubbles span:nth-child(7n+1){
+  --color: #6bff6b;
+}
+.bubbles span:nth-child(7n+2){
+  --color: #ff6b6b;
+}
+.bubbles span:nth-child(7n+3){
+  --color: #6b6bff;
+}
+.bubbles span:nth-child(7n+4){
+  --color: #ff6b6b;
+}   
+.bubbles span:nth-child(7n+5){
+  --color: #6b6bff;
+}
+.bubbles span:nth-child(7n+6){
+  --color: #ff6b6b;
+}
