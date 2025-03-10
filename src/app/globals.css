@@ -462,17 +462,21 @@
 
 /* background  bubbles*/
 
-.bubbles{
+.bubbles {
   background-color: #fff;
-  min-height: 100vh;
+  min-height: 80vh;
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  z-index: -1;
+  z-index: 0; /* Keep it behind everything */
 }
-.bubbles span[style*="--size: 5px"] {
-  display: none;
+
+.bubbles span {
+  z-index: -5; /* Lower than everything else */
+  pointer-events: none; /* Prevent them from blocking clicks */
 }
+
+
 .bubbles span {
   max-width: 30px; /* Prevent large bubbles */
   max-height: 30px;
@@ -483,7 +487,7 @@
   --color: #00b7c2;
   background-color: var(--color);
   position: absolute;
-  z-index: 1;
+  z-index: -10;
   border-radius: 50%;
   width: var(--size);
   aspect-ratio: 1/1;
