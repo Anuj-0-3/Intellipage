@@ -10,13 +10,14 @@ export async function POST(req:NextRequest) {
     
    
 
-    const session = liveblocks.prepareSession(sessionClaims?.email!,{
-        userInfo:{
-            name:sessionClaims?.fullName!,
-            email:sessionClaims?.email!,
-            avatar:sessionClaims?.image!,
+    const session = liveblocks.prepareSession(sessionClaims?.email ?? "", {
+        userInfo: {
+            name: sessionClaims?.fullName ?? "Unknown User",
+            email: sessionClaims?.email ?? "",
+            avatar: sessionClaims?.image ?? "/default-avatar.png",
         }
     });
+    
 
     
 

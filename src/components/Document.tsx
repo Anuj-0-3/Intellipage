@@ -51,12 +51,14 @@ const Document = ({ id }: { id: string }) => {
     useEffect(() => {
         localStorage.setItem("selectedPattern", selectedPattern);
     }, [selectedPattern]);
+    
 
     useEffect(() => {
-        if (data?.title && data.title !== input) {
-            setInput(data.title);
+        if (data?.title) {
+            setInput((prevInput) => (prevInput !== data.title ? data.title : prevInput));
         }
     }, [data]);
+    
 
     const updateTitle = async (e: FormEvent) => {
         e.preventDefault();
@@ -74,7 +76,7 @@ const Document = ({ id }: { id: string }) => {
 
     const { user } = useUser();
     const [groupedData, setGroupedData] = React.useState<{ owner: RoomDocument[]; editor: RoomDocument[] }>({ owner: [], editor: [] });
-    const [dat, loadin, erro] = useCollection(
+    const [dat,] = useCollection(
         user && (
             query(
                 collectionGroup(db, 'rooms'),

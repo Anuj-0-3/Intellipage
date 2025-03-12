@@ -7,7 +7,7 @@ import { doc } from 'firebase/firestore'
 import { usePathname } from 'next/navigation'
 
 const SidebarOption = ({ href, id }: { href: string; id: string }) => {
-  const [data, loading, error] = useDocumentData(doc(db as any, "documents", id));
+  const [data, loading, error] = useDocumentData(doc(db, "documents", id));
   const pathname = usePathname();
   const isActive = pathname === href; // Ensuring exact match
 

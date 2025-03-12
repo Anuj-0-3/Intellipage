@@ -3,10 +3,8 @@
 import * as Y from 'yjs'
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -44,8 +42,8 @@ const TranslateDocument = ({doc}:{doc:Y.Doc}) => {
     const [isOpen, setIsOpen] = useState(false)
     const [language, setLanguage] = useState<string>("")
     const [summary, setSummary] = useState("")
-    const [question, setQuestion] = useState("")
-    const [isPending, setIsPending] = useTransition()
+    const [question] = useState("")
+    const [isPending] = useTransition()
 
 
     const handleAskQuestion = async (e:React.FormEvent) => {

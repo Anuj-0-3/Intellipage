@@ -25,7 +25,7 @@ interface RoomDocument extends DocumentData {
 const Sidebar = () => {
   const { user } = useUser();
   const [groupedData, setGroupedData] = React.useState<{ owner: RoomDocument[]; editor: RoomDocument[] }>({ owner: [], editor: [] });
-  const [data, loading, error] = useCollection(
+  const [data] = useCollection(
     user && (
       query(
         collectionGroup(db, 'rooms'),

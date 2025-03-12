@@ -2,7 +2,6 @@ import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { Metadata } from 'next'
 import Navbar from "@/components/navbar"
-import Sidebar from '@/components/Sidebar';
 import { Toaster } from '@/components/ui/sonner';
 
 

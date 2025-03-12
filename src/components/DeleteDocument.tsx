@@ -17,7 +17,7 @@ import { toast } from "sonner"
 
 const DeleteDocument = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const [isPending, setIsPending] = useTransition()
+    const [isPending] = useTransition()
     const pathname=usePathname()
     const router=useRouter()
     const handleDelete = async () => {

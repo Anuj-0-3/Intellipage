@@ -1,20 +1,16 @@
 "use client"
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { FormEvent, startTransition, useState, useTransition } from "react"
+import {  startTransition, useState, useTransition } from "react"
 import { Button } from "./ui/button"
-import { usePathname, useRouter } from "next/navigation"
-import { deleteDocument, inviteUserToDocument, removeUserFromDocument } from "@/actions/actions"
+import {  removeUserFromDocument } from "@/actions/actions"
 import { toast } from "sonner"
-import { Input } from "./ui/input"
 import { useUser } from "@clerk/nextjs"
 import useOwner from "@/lib/useOwner"
 import { useRoom } from "@liveblocks/react/suspense"
@@ -30,7 +26,7 @@ const ManageUsers = () => {
     const isOwner = useOwner();
     const room = useRoom()
     const [isOpen, setIsOpen] = useState(false)
-    const [isPending, setIsPending] = useTransition()
+    const [isPending] = useTransition()
 
     const [usersInRoom] = useCollection(
         user && query(collectionGroup(db, "rooms"), where("roomId", "==", room.id))

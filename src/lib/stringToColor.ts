@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const stringToColor = (str:string) => {
     let hash = 0;
