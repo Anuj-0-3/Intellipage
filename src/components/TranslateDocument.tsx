@@ -99,7 +99,7 @@ const TranslateDocument = ({doc}:{doc:Y.Doc}) => {
     <div className="flex">
       <BotIcon className="w-10 flex-shrink-0" />
       <p className="font-bold">
-        GPT {isPending ? "is thinking..." : "Says:"}
+        AI {isPending ? "is thinking..." : "Says:"}
       </p>
     </div>
     <p>

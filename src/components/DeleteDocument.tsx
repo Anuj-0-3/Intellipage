@@ -15,8 +15,6 @@ import { usePathname, useRouter } from "next/navigation"
 import { deleteDocument } from "@/actions/actions"
 import { toast } from "sonner"
 
-
-
 const DeleteDocument = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isPending, setIsPending] = useTransition()
@@ -31,7 +29,7 @@ const DeleteDocument = () => {
 
             if(success){
                 setIsOpen(false)
-                router.replace("/");
+                router.replace("/doc");
                 toast.success("Document deleted successfully")
             }else{
                 toast.error("Error deleting document")

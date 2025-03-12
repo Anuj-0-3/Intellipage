@@ -37,7 +37,7 @@ const  InviteUser = () => {
             if(success){
                 setIsOpen(false)
                 setEmail("")
-                router.replace("/");
+                router.refresh();
                 toast.success("User Added to the room")
             }else{
                 toast.error("Error adding user in room ")
