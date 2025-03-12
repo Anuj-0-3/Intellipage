@@ -13,12 +13,12 @@ IntelliPage is a Notion-like web application that enables users to create and ma
 
 ## Tech Stack
 
-- **Frontend:** Next.js, React, Tailwind CSS, DaisyUI
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB
-- **Authentication:** NextAuth.js
-- **Real-time Collaboration:** WebSockets
-- **AI Integration:** OpenAI API (for content suggestions)
+- **Frontend:** Next.js, React, Tailwind CSS, ShadcnUI
+- **Backend:** Node.js
+- **Database:** Firebase
+- **Authentication:** Clerk
+- **Real-time Collaboration:** LiveBlocks
+- **AI Integration:** Cloudflare Workers
 
 ## Deployment
 
