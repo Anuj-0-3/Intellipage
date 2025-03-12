@@ -6,7 +6,7 @@ import RoomProvider from '@/components/RoomProvider';
 const DocLayout = async ({ children,
    params }: 
    { children: React.ReactNode;
-   params:  { id: string } ;
+   params:  Promise<{ id: string }> ;
   }) => {
 
     const { id } = await params;
