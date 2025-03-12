@@ -2,13 +2,13 @@ import { initializeApp,getApps,getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAgrvYMI6xGG8D031xPRep9cCWRkyMaVw4",
-    authDomain: "intellipage-a0465.firebaseapp.com",
-    projectId: "intellipage-a0465",
-    storageBucket: "intellipage-a0465.firebasestorage.app",
-    messagingSenderId: "499202487097",
-    appId: "1:499202487097:web:34be5b012b57644b08aee8",
-    measurementId: "G-VR4SVMSSFF"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
   };
 
   const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
