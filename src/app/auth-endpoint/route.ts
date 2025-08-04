@@ -1,39 +1,41 @@
-import liveblocks from "@/lib/liveblocks";
-import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
-import { adminDb } from "../../../firebase-admin";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import liveblocks from "@/lib/liveblocks";
 
-export async function POST(req:NextRequest) {
-    auth.protect()
-    const { sessionClaims}= await auth();
-    const { room }= await req.json();
-    
-   
+export async function POST(req: NextRequest) {
+  const authResult = await auth();
+  const userId = authResult?.userId;
+  const { room } = await req.json();
 
-    const session = liveblocks.prepareSession(sessionClaims?.email ?? "", {
-        userInfo: {
-            name: sessionClaims?.fullName ?? "Unknown User",
-            email: sessionClaims?.email ?? "",
-            avatar: sessionClaims?.image ?? "/default-avatar.png",
-        }
-    });
-    
+  console.log("DEBUG: userId =", userId, "| type =", typeof userId);
+  console.log("DEBUG: room =", room);
 
-    
+  if (!userId || typeof userId !== "string" || userId.trim() === "") {
+    return new Response("Unauthorized: Invalid or missing userId", { status: 401 });
+  }
 
-    const usersInRoom = await adminDb
-    .collectionGroup("rooms")
-    .where("userId","==",sessionClaims?.email)
-    .get();
+  if (!room || typeof room !== "string") {
+    return new Response("Invalid room", { status: 400 });
+  }
 
-    const userInRoom = usersInRoom.docs.find((doc)=>doc.id === room);
+  const user = await currentUser();
+  const email = user?.emailAddresses?.[0]?.emailAddress ?? `${userId}@example.com`;
+  const name = `${user?.firstName ?? ""} ${user?.lastName ?? ""}`.trim();
+  const avatar = user?.imageUrl ?? "/default-avatar.png";
 
-    if(userInRoom?.exists){
-       session.allow(room,session.FULL_ACCESS)
-       const {body,status}= await session.authorize();
-
-       return new Response(body,{status});
-    }else{
-        return new Response("Unauthorized",{status:401});
+  const session = liveblocks.prepareSession(
+    userId, // ✅ pass as string, not object!
+    {
+      userInfo: {
+        name: name || "Anonymous",
+        email,
+        avatar,
+      },
     }
+  );
+
+  session.allow(room, session.FULL_ACCESS);
+  const { body, status } = await session.authorize();
+
+  return new Response(body, { status });
 }

@@ -1,9 +1,8 @@
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/nextjs'
 import './globals.css'
 import { Metadata } from 'next'
 import Navbar from "@/components/navbar"
 import { Toaster } from '@/components/ui/sonner';
-
 
 export const metadata: Metadata = { 
   title: "Intellipage", 
@@ -21,9 +20,13 @@ export default function RootLayout({
         <body className=""> 
           <Navbar />
           <div className="flex min-h-screen">
-            {/* <Sidebar /> */}
             <main className='flex-1 overflow-y-auto scrollbar-hide'>
-              {children}
+              <SignedIn>
+                {children}
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
             </main>
           </div>
           <Toaster position='top-center'/>
